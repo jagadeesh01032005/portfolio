@@ -28,3 +28,14 @@ Notes
 - The PDFs and images included in the repository are referenced by relative paths and will be served correctly by the static host.
 
 If you want a different deployment target (Netlify, Vercel, Firebase Hosting), tell me which one and I can add an optional configuration file.
+
+Contact form (Formspree)
+
+If you want form submissions emailed to `jagadeeshmollguri@gmail.com` without building a server, use Formspree:
+
+1. Go to https://formspree.io and sign up.
+2. Create a new form and copy the form endpoint (looks like `https://formspree.io/f/XXXXXX`).
+3. Open `d:\New folder\script.js` and set `CONTACT_ENDPOINT` to that URL.
+4. Deploy — submissions will be forwarded to the email you configure in Formspree.
+
+The included contact form falls back to opening the user's mail client if no endpoint is configured.

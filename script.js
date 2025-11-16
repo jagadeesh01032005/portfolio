@@ -83,4 +83,45 @@ document.addEventListener('DOMContentLoaded', function() {
       nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
     });
   }
+
+  // Contact form handling
+  // Formspree endpoint (set to your form URL)
+  const CONTACT_ENDPOINT = 'https://formspree.io/f/xeovrola';
+  const contactForm = document.getElementById('contact-form');
+  const contactStatus = document.getElementById('contact-status');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (contactStatus) contactStatus.textContent = 'Sending...';
+
+      const formData = new FormData(contactForm);
+
+      if (CONTACT_ENDPOINT && CONTACT_ENDPOINT.startsWith('http')) {
+        fetch(CONTACT_ENDPOINT, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).then(res => {
+          if (res.ok) {
+            if (contactStatus) contactStatus.textContent = 'Message sent — thank you.';
+            contactForm.reset();
+          } else {
+            return res.json().then(data => { throw data; });
+          }
+        }).catch(err => {
+          console.error('Form submit error', err);
+          if (contactStatus) contactStatus.textContent = 'Send failed — try emailing directly.';
+        });
+      } else {
+        // Fallback: open mail client with prefilled subject/body
+        const name = formData.get('name') || '';
+        const email = formData.get('email') || '';
+        const message = formData.get('message') || '';
+        const subject = encodeURIComponent('Portfolio contact from ' + name);
+        const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+        window.location.href = 'mailto:jagadeeshmollguri@gmail.com?subject=' + subject + '&body=' + body;
+        if (contactStatus) contactStatus.textContent = 'Opened your mail client. Please send the message.';
+      }
+    });
+  }
 });
