@@ -12,11 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
   updateBodyPadding();
   window.addEventListener('resize', updateBodyPadding);
 
-  // Project card click handler
-  const projectCards = document.querySelectorAll('.project');
-  projectCards.forEach(card => {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', function(e) {
+  // Generic handler for any element that has a data-file attribute (projects, internships, etc.)
+  const fileElements = document.querySelectorAll('[data-file]');
+  fileElements.forEach(el => {
+    // visually indicate clickability
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', function(e) {
       e.stopPropagation();
       const fileName = this.getAttribute('data-file');
       if (fileName) {
@@ -116,9 +117,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fallback: open mail client with prefilled subject/body
         const name = formData.get('name') || '';
         const email = formData.get('email') || '';
+        const phone = formData.get('phone') || '';
         const message = formData.get('message') || '';
         const subject = encodeURIComponent('Portfolio contact from ' + name);
-        const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+        const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + (phone ? '\nPhone: ' + phone : '') + '\n\n' + message);
         window.location.href = 'mailto:jagadeeshmollguri@gmail.com?subject=' + subject + '&body=' + body;
         if (contactStatus) contactStatus.textContent = 'Opened your mail client. Please send the message.';
       }

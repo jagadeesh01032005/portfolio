@@ -180,19 +180,36 @@
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-year">2024</div>
-          <div class="timeline-body">
+          <div class="timeline-body" data-file="prodigy.jpeg" title="Open certificate">
             <h4>Prodigy InfoTech</h4>
-            <p>Machine learning model development.</p>
+           
           </div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-year">2025</div>
-          <div class="timeline-body">
+          <div class="timeline-body" data-file="codec.jpeg" title="Open certificate">
             <h4>Codec Technologies</h4>
-            <p>Spam detection & CNN model training.</p>
           </div>
         </div>
+
+
+          <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-body" data-file="oasis.jpeg" title="Open certificate">
+            <h4>Oasis info byte</h4>
+          </div>
+        </div>
+ 
+          <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-body" data-file="alfido.jpeg" title="Open certificate">
+            <h4>Alfido Technologies</h4>
+            
+          </div>
+        </div>
+
+
       </div>
     </div>
   </section>
@@ -235,25 +252,38 @@
         </div>
       </div>
       <!-- Contact form: posts to Formspree if endpoint configured, otherwise fallback to mailto -->
-      <form id="contact-form" class="contact-form" novalidate>
-        <input type="hidden" name="_subject" value="Portfolio contact" />
-        <div>
-          <label for="cf-name">Name</label>
-          <input id="cf-name" name="name" type="text" required />
-        </div>
-        <div>
-          <label for="cf-email">Email</label>
-          <input id="cf-email" name="email" type="email" required />
-        </div>
-        <div>
-          <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" rows="5" required></textarea>
-        </div>
-        <div class="form-actions">
-          <button id="contact-submit" class="btn btn-primary" type="submit">Send message</button>
+      <div class="contact-panel">
+        <h3 class="contact-panel-title">Let's Work Together</h3>
+        <p class="contact-panel-lead">Have a project in mind? Let's create something amazing together!</p>
+        <form id="contact-form" class="contact-form" novalidate>
+          <input type="hidden" name="_subject" value="Portfolio contact" />
+
+          <div>
+            <label for="cf-name">Name *</label>
+            <input id="cf-name" name="name" type="text" placeholder="Your Name" required />
+          </div>
+
+          <div>
+            <label for="cf-email">Email *</label>
+            <input id="cf-email" name="email" type="email" placeholder="your.email@example.com" required />
+          </div>
+
+          <div>
+            <label for="cf-phone">Phone</label>
+            <input id="cf-phone" name="phone" type="tel" placeholder="Your Phone Number (optional)" />
+          </div>
+
+          <div>
+            <label for="cf-message">Message *</label>
+            <textarea id="cf-message" name="message" rows="2" placeholder="Tell me about your project or inquiry..." required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button id="contact-submit" class="btn btn-primary full-width" type="submit">Send Message</button>
+          </div>
           <div id="contact-status" class="form-note" aria-live="polite"></div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
